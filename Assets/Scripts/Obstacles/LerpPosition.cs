@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FenceRotation : MonoBehaviour
+public class LerpPosition : MonoBehaviour
 {
-    public float rotAmount;
-    public float rotSpeed;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +15,4 @@ public class FenceRotation : MonoBehaviour
     {
         
     }
-
-   /* IEnumerator RotateFence()
-    {
-
-        transform.eulerAngles = Quaternion.Lerp(transform.rotation, )
-    }*/
 }
