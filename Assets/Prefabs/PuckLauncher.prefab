@@ -175,16 +175,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82252de5eded3e642b435336e0e20cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   puck: {fileID: 8013701148356298527, guid: 1db85b8d7fbc1e04784485baec1ea00b, type: 3}
   targeter: {fileID: 170746927010506845}
   targeterLayerMask:
     serializedVersion: 2
     m_Bits: 64
   cancelTargetingArea: {fileID: 170746926020185961}
-  canShoot: 1
   isShooting: 0
-  uiButtonPress: 0
 --- !u!120 &1102972
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -192,7 +189,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170746926336916770}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -322,7 +319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170746927010506846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 170746925301406369}
