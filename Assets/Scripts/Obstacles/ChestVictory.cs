@@ -71,11 +71,6 @@ public class ChestVictory : MonoBehaviour
     }
     
 
-    void LerpFloat()
-    {
-
-    }
-
     IEnumerator LerpPosition(Transform startTransform, Transform endTransform)
     {
         float time = 0;

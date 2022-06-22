@@ -12,6 +12,8 @@ public class PuckPhysics : MonoBehaviour
 
     Vector3 reflection;
 
+    [HideInInspector] public bool ricocheyPuck = true;
+
     private void Start()
     {
         puckStats = GetComponent<PuckStats>();
@@ -23,12 +25,28 @@ public class PuckPhysics : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 6) return;
+        // Gets called when hiting an Obstacle
+        if (collision.gameObject.layer == 7)
+        {
+            reflection = Vector3.Reflect(collision.relativeVelocity, collision.GetContact(0).normal);
 
-        reflection = Vector3.Reflect(collision.relativeVelocity, collision.GetContact(0).normal);
-        
-        force = collision.relativeVelocity.magnitude * bounceDamp;
+            force = collision.relativeVelocity.magnitude * bounceDamp;
 
-        rb.velocity = -reflection.normalized * force;
+            if (ricocheyPuck)
+            {
+                Debug.Log("Richochey");
+                rb.velocity = -reflection.normalized * force;
+            }
+            else
+            {
+                Debug.Log("Force throu");
+                rb.velocity = reflection.normalized * force;
+
+                Debug.DrawRay(transform.position, reflection.normalized * force);
+                ricocheyPuck = true;
+            }
+            
+        }
+
     }
 }

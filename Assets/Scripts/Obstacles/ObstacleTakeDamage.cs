@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class ObstacleTakeDamage : MonoBehaviour
 {
+    public PuckPhysics puck;
     [SerializeField] bool isChest;
-    [SerializeField] float health;
+    public float health;
     float startHealth;
 
     [SerializeField] GameObject healthBar;
@@ -59,13 +60,21 @@ public class ObstacleTakeDamage : MonoBehaviour
                         chestVictory = GetComponent<ChestVictory>();
                         chestVictory.StartChestVictory();
 
+                        healthBar.SetActive(false);
                         isChestKilled = true;
 
                     }
                 }
                 else
                 {
-                    KillObstacle();
+                    puck = collision.gameObject.GetComponent<PuckPhysics>();
+                    puck.ricocheyPuck = false;
+
+                    GameObject.Destroy(this.gameObject);
+
+                   // LaunchPuck(collision);
+                  //  KillObstacle();
+                    
                 }
             }
         }
@@ -74,5 +83,11 @@ public class ObstacleTakeDamage : MonoBehaviour
     void KillObstacle()
     {
         GameObject.Destroy(this.gameObject);
+    }
+
+    void LaunchPuck(Collision collision)
+    {
+        puck = collision.gameObject.GetComponent<PuckPhysics>();
+        puck.ricocheyPuck = false;
     }
 }
