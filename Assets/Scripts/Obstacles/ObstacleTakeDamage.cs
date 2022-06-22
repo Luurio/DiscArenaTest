@@ -11,27 +11,28 @@ public class ObstacleTakeDamage : MonoBehaviour
 
     [SerializeField] GameObject healthBar;
 
-    GameManager gameManager;
+    Game_Manager gameManager;
+    ChestVictory chestVictory;
     Slider slider;
-    GameObject victoryScreen;
+
+    bool isChestKilled;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Game_Manager>();
         startHealth = health;
 
         slider = healthBar.GetComponent<Slider>();
         healthBar.SetActive(false);
-
-        if (!isChest) return;
-        victoryScreen = GameObject.FindGameObjectWithTag("VictoryScreen").transform.GetChild(0).gameObject;
     }
 
    
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
+        if (gameManager.levelEnded) return;
+
         if(collision.gameObject.layer == 8)
         {
 
@@ -44,11 +45,23 @@ public class ObstacleTakeDamage : MonoBehaviour
                 healthBar.SetActive(true);
             }
 
-            if(health <= 0)
+            if(!gameManager.chestDestroyed)Vibrator.Vibrate();
+            
+
+            if (health <= 0)
             {
                 if (isChest)
                 {
-                    KillChest();
+                    if (!isChestKilled)
+                    {
+                        gameManager.chestDestroyed = true;
+
+                        chestVictory = GetComponent<ChestVictory>();
+                        chestVictory.StartChestVictory();
+
+                        isChestKilled = true;
+
+                    }
                 }
                 else
                 {
@@ -56,11 +69,6 @@ public class ObstacleTakeDamage : MonoBehaviour
                 }
             }
         }
-    }
-
-    void KillChest()
-    {
-        victoryScreen.SetActive(true);
     }
 
     void KillObstacle()

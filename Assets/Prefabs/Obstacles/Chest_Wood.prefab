@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &546516201400655791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2801223989067409765}
+  m_Layer: 0
+  m_Name: MainCamEndPont
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2801223989067409765
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546516201400655791}
+  m_LocalRotation: {x: 6.865367e-16, y: 0.9317491, z: -0.3631028, w: -2.6754343e-16}
+  m_LocalPosition: {x: 0, y: 2.09, z: 2.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3602670130679855274}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 42.582, y: 180, z: 0}
+--- !u!1 &1011800132766197695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4367194008524918878}
+  m_Layer: 0
+  m_Name: MainCamStartPont
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4367194008524918878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011800132766197695}
+  m_LocalRotation: {x: 6.865367e-16, y: 0.9317491, z: -0.3631028, w: -2.6754343e-16}
+  m_LocalPosition: {x: 0, y: 2.09, z: 2.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3602670130679855274}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 42.582, y: 180, z: 0}
 --- !u!1 &5292720365431677720
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +162,8 @@ GameObject:
   - component: {fileID: 3886626863166107253}
   - component: {fileID: 9207753733921994540}
   - component: {fileID: 5609657289504380043}
+  - component: {fileID: 7579209425471971956}
+  - component: {fileID: 4326812286143198062}
   m_Layer: 0
   m_Name: Chest_Wood
   m_TagString: Untagged
@@ -116,15 +178,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5609657289504380052}
-  m_LocalRotation: {x: -0, y: 1, z: -0.00000003707743, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 1.55, y: 0.171, z: 2.778}
   m_LocalScale: {x: 1.996525, y: 1.996525, z: 1.996525}
   m_Children:
   - {fileID: 3045760765074004336}
   - {fileID: 2832470142634832621}
+  - {fileID: 2801223989067409765}
+  - {fileID: 4367194008524918878}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &1140877261337751626
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -203,6 +267,64 @@ MonoBehaviour:
   isChest: 1
   health: 5
   healthBar: {fileID: 5292720365431677720}
+--- !u!95 &7579209425471971956
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609657289504380052}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3de469e97284e5a47ae6f7b7a055e5d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4326812286143198062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609657289504380052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fc67140cb4c4f46aa14983d2569083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowMotionTimeScale: 0.132
+  camPositionLerpTime: 3
+  camPositionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  camEndTransform: {fileID: 2801223989067409765}
 --- !u!1 &5610592008047331428
 GameObject:
   m_ObjectHideFlags: 0

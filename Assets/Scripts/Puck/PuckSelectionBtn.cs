@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class PuckSelectionBtn : MonoBehaviour
 {
     public GameObject puck;
-    GameManager gameManager;
+    Game_Manager gameManager;
     Button btn;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Game_Manager>();
 
         btn = GetComponent<Button>();
         btn.onClick.AddListener(ButtonClicked);
@@ -21,7 +21,7 @@ public class PuckSelectionBtn : MonoBehaviour
 
     void ButtonClicked()
     {
-
+        if (gameManager.chestDestroyed) return;
         gameManager.puckMovement.DestroyPuck();
         gameManager.puckMovement.InstantiateNewPuck(puck);
 

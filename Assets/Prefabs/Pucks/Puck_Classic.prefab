@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  launchForce: 20
-  forceDamp: 0.806
+  launchForce: 15
+  bounceDamp: 0.9
 --- !u!114 &466840266959008057
 MonoBehaviour:
   m_ObjectHideFlags: 0

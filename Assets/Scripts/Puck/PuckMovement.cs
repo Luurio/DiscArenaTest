@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class PuckMovement : MonoBehaviour
 {
-    public GameManager gameManager;
+    Game_Manager gameManager;
     public GameObject puck;
 
     [SerializeField] Transform targeter;
@@ -27,6 +27,8 @@ public class PuckMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Game_Manager>();
+
         targetingNullArea = transform.parent.GetComponent<TargetingNullArea>();
         targetingNullAreaSize = targetingNullArea.areaSize;
 
@@ -43,7 +45,9 @@ public class PuckMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.levelEnded) return;
         if (EventSystem.current.currentSelectedGameObject != null) return;
+
         if (!isShooting)
         {
             

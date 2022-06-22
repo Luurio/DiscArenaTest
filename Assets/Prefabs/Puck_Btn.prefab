@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5622924788028729152}
   - component: {fileID: 5622924788028729153}
   - component: {fileID: 5622924788028729214}
+  - component: {fileID: 896874082}
   m_Layer: 5
   m_Name: Puck_Btn
   m_TagString: Untagged
@@ -121,6 +122,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &896874082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5622924788028729212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c83b9b5776813498b2e5ed0aa36271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puck: {fileID: 8013701148356298527, guid: 1db85b8d7fbc1e04784485baec1ea00b, type: 3}
 --- !u!1 &5622924789658718311
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,11 +202,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 50
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_BestFit: 1
+    m_MinSize: 5
+    m_MaxSize: 128
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
