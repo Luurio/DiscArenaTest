@@ -1,4 +1,4 @@
-# Disc Arena Test
+# Disc Arena Test Project!
 
 
 # Description
@@ -8,10 +8,13 @@ The current project is a **proof of concept** of the game and it only has one le
 
 The game was developed using unity version **2020.3.30f1**
 
+# Repository
+
+[Github Repository for Disc Arena](https://github.com/Luurio/DiscArenaTest)
 
 # Installation
 
- - Clone the current repository or download the project as a zip file and extract its content
+ - Clone the repository or download the project as a zip file and extract its content
  - Open the unity project with unity and specify the version as **2020.3.30.f1**
  
 
@@ -30,3 +33,4 @@ For running the game you have two options
  2. Release the touch input to launch the puck
  3. Select a different puck by pressing the classic or electric button 
  4. The player wins by destroying the chest and afterwards the player can press restart to play again
+
