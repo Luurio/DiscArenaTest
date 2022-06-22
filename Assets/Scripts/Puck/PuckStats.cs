@@ -5,7 +5,6 @@ using UnityEngine;
 public class PuckStats : MonoBehaviour
 {
     public int damage;
-    public float launchSpeed;
-
-    
+    public float launchForce;
+    [Range(0,1)]public float bounceDamp;
 }

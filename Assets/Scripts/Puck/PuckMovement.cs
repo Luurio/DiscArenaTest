@@ -17,15 +17,16 @@ public class PuckMovement : MonoBehaviour
     GameObject launchedPuck;
 
     float targetingNullAreaSize;
-     public bool canShoot = true;
-     public bool isShooting;
-     public bool uiButtonPress;
+
+    [HideInInspector] public bool isShooting;
+
     Vector3 puckRotOffset;
+
+    LineRenderer projectileReflection;
 
     // Start is called before the first frame update
     void Start()
     {
-        
         targetingNullArea = transform.parent.GetComponent<TargetingNullArea>();
         targetingNullAreaSize = targetingNullArea.areaSize;
 
@@ -34,53 +35,39 @@ public class PuckMovement : MonoBehaviour
         launchedPuck = Instantiate(puck, transform.position, Quaternion.Euler(puckRotOffset), transform);
         gameManager.activePuckStats = launchedPuck.GetComponent<PuckStats>();
         rb = launchedPuck.GetComponent<Rigidbody>();
+
+        projectileReflection = GetComponent<LineRenderer>();
+        projectileReflection.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (!stopCode)
-        //{
+        if (EventSystem.current.currentSelectedGameObject != null) return;
         if (!isShooting)
         {
+            
             PositionPuckTargeter();
 
             if (TargeterDistanceFromPuck() > targetingNullAreaSize)
             {
                 transform.LookAt(targeter, Vector3.up);
 
-                if (!uiButtonPress)
+                if (Input.GetMouseButtonUp(0))
                 {
-                    if (Input.GetMouseButtonUp(0) && canShoot)
-                    {
-                        //!EventSystem.current.IsPointerOverGameObject()
-                        Debug.Log("Puck launched");
-                        LaunchPuck();
+                    Debug.Log("Puck launched");
+                    LaunchPuck();
 
-                        isShooting = true;
-                        canShoot = false;
-                    }
+                    isShooting = true;
+                    projectileReflection.enabled = false;
                 }
-
-
-
             }
             else
             {
                 Debug.Log("Targeter to CLOSE");
+                projectileReflection.enabled = false;
             }
         }
-        //}
-
-
-
-
-        /* if (!canShoot)
-         {
-             DestroyPuck();
-         }*/
-
-        Debuging();
     }
 
 
@@ -93,6 +80,8 @@ public class PuckMovement : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            projectileReflection.enabled = true;
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -106,30 +95,17 @@ public class PuckMovement : MonoBehaviour
         }
     }
 
-   
-
     void LaunchPuck()
     {
-        
-         
-            rb.AddForce(rb.transform.forward * 30, ForceMode.Impulse);
-            
-        
-        
+        rb.AddForce(rb.transform.forward * gameManager.activePuckStats.launchForce, ForceMode.Impulse);
     }
 
     public void DestroyPuck()
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
         Debug.Log("DestroyPuck");
 
         GameObject.Destroy(launchedPuck);
         transform.eulerAngles = new Vector3(0, 0, 0);
-
-       // isShooting = false;
-        //canShoot = true;
-        //}
     }
 
     public void InstantiateNewPuck(GameObject newPuck)
@@ -138,15 +114,7 @@ public class PuckMovement : MonoBehaviour
 
         rb = launchedPuck.GetComponent<Rigidbody>();
         gameManager.activePuckStats = launchedPuck.GetComponent<PuckStats>();
-        //uiButtonPress = false;
+
         Debug.Log("InstantiateNewPuck");
-        
-    }
-
-    void Debuging()
-    {
-
-        if (launchedPuck == null) return;
-        Debug.DrawRay(transform.position, launchedPuck.transform.forward * 10, Color.red);
     }
 }

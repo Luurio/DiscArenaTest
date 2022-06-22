@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class ObstacleTakeDamage : MonoBehaviour
 {
-    public float health;
+    [SerializeField] bool isChest;
+    [SerializeField] float health;
     float startHealth;
 
     [SerializeField] GameObject healthBar;
 
     GameManager gameManager;
     Slider slider;
+    GameObject victoryScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,9 @@ public class ObstacleTakeDamage : MonoBehaviour
 
         slider = healthBar.GetComponent<Slider>();
         healthBar.SetActive(false);
+
+        if (!isChest) return;
+        victoryScreen = GameObject.FindGameObjectWithTag("VictoryScreen").transform.GetChild(0).gameObject;
     }
 
    
@@ -29,6 +34,7 @@ public class ObstacleTakeDamage : MonoBehaviour
     {
         if(collision.gameObject.layer == 8)
         {
+
             health = health - gameManager.activePuckStats.damage;
 
             slider.value = health / startHealth;
@@ -40,8 +46,25 @@ public class ObstacleTakeDamage : MonoBehaviour
 
             if(health <= 0)
             {
-                GameObject.Destroy(this.gameObject);
+                if (isChest)
+                {
+                    KillChest();
+                }
+                else
+                {
+                    KillObstacle();
+                }
             }
         }
+    }
+
+    void KillChest()
+    {
+        victoryScreen.SetActive(true);
+    }
+
+    void KillObstacle()
+    {
+        GameObject.Destroy(this.gameObject);
     }
 }
