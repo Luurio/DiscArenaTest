@@ -9,10 +9,7 @@ public class PuckPhysics : MonoBehaviour
 
     PuckStats puckStats;
     Rigidbody rb;
-
     Vector3 reflection;
-
-    [HideInInspector] public bool ricocheyPuck = true;
 
     private void Start()
     {
@@ -31,22 +28,13 @@ public class PuckPhysics : MonoBehaviour
             reflection = Vector3.Reflect(collision.relativeVelocity, collision.GetContact(0).normal);
 
             force = collision.relativeVelocity.magnitude * bounceDamp;
-
-            if (ricocheyPuck)
-            {
-                Debug.Log("Richochey");
-                rb.velocity = -reflection.normalized * force;
-            }
-            else
-            {
-                Debug.Log("Force throu");
-                rb.velocity = reflection.normalized * force;
-
-                Debug.DrawRay(transform.position, reflection.normalized * force);
-                ricocheyPuck = true;
-            }
             
+            rb.velocity = -reflection.normalized * force;
         }
 
+        if(collision.gameObject.layer != 6)
+        {
+            rb.AddTorque(transform.up * Random.Range(-10f, 10f), ForceMode.Impulse);
+        }
     }
 }

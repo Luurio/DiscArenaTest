@@ -11,7 +11,6 @@ public class ChestVictory : MonoBehaviour
 
     [SerializeField] Transform camEndTransform;
     [SerializeField] Transform camStartTransform;
-    //Transform camStartTransform;
     Transform camTransform;
     
 
@@ -80,7 +79,6 @@ public class ChestVictory : MonoBehaviour
         Quaternion startRotation = startTransform.rotation;
         Quaternion endRotation = endTransform.rotation;
 
-        // Lerp 
         while (time < camPositionLerpTime)
         {
             camTransform.position = Vector3.Lerp(startPosition, endPosition, camPositionCurve.Evaluate(time / camPositionLerpTime));

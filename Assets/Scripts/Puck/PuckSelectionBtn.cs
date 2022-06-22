@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PuckSelectionBtn : MonoBehaviour
 {
     public GameObject puck;
+
     Game_Manager gameManager;
     Button btn;
 

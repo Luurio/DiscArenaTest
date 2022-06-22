@@ -67,27 +67,10 @@ public class ObstacleTakeDamage : MonoBehaviour
                 }
                 else
                 {
-                    puck = collision.gameObject.GetComponent<PuckPhysics>();
-                    puck.ricocheyPuck = false;
-
                     GameObject.Destroy(this.gameObject);
-
-                   // LaunchPuck(collision);
-                  //  KillObstacle();
-                    
                 }
             }
         }
     }
 
-    void KillObstacle()
-    {
-        GameObject.Destroy(this.gameObject);
-    }
-
-    void LaunchPuck(Collision collision)
-    {
-        puck = collision.gameObject.GetComponent<PuckPhysics>();
-        puck.ricocheyPuck = false;
-    }
 }

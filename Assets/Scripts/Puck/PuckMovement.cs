@@ -5,25 +5,25 @@ using UnityEngine.EventSystems;
 
 public class PuckMovement : MonoBehaviour
 {
-    Game_Manager gameManager;
     public GameObject puck;
 
     [SerializeField] Transform targeter;
     [SerializeField] LayerMask targeterLayerMask;
     [SerializeField] Transform cancelTargetingArea;
 
+    Game_Manager gameManager;
     TargetingNullArea targetingNullArea;
+
     Rigidbody rb;
     GameObject launchedPuck;
+    LineRenderer projectileReflection;
+
+    Vector3 puckRotOffset;
 
     float targetingNullAreaSize;
 
     [HideInInspector] public bool isShooting;
-
-    Vector3 puckRotOffset;
-
-    LineRenderer projectileReflection;
-
+    
     // Start is called before the first frame update
     void Start()
     {

@@ -6,5 +6,5 @@ public class PuckStats : MonoBehaviour
 {
     public int damage;
     public float launchForce;
-    [Range(0,1)]public float bounceDamp = 0.9f;
+    [Range(0,2)]public float bounceDamp = 0.9f;
 }
