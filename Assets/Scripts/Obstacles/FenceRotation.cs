@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class FenceRotation : MonoBehaviour
 {
-    [Range(0,180)] public float rotAmount = 90;
-    public float rotTime;
-    public float timeBetweenRot;
+    [Range(0,180)] [SerializeField] float rotAmount = 90;
+    [SerializeField] float rotTime;
+    [SerializeField] float timeBetweenRot;
+
+    public AnimationCurve curve;
 
     float rotStart;
 
@@ -50,7 +52,7 @@ public class FenceRotation : MonoBehaviour
         Quaternion startValue = transform.rotation;
         while (time < duration)
         {
-            transform.rotation = Quaternion.Lerp(startValue, endValue, time / duration);
+            transform.rotation = Quaternion.Lerp(startValue, endValue, curve.Evaluate( time / duration));
             time += Time.deltaTime;
             yield return null;
         }
@@ -66,17 +68,12 @@ public class FenceRotation : MonoBehaviour
         
         if (endValue == Quaternion.Euler(targetRot_1))
         {
-
             isLerpFinished_2 = true;
-
-            Debug.Log("targetRot_1");
         }
 
         if (endValue == Quaternion.Euler(targetRot_2))
         {
             isLerpFinished_1 = true;
-
-            Debug.Log("targetRot_2");
         }
     }
 }
